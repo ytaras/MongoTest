@@ -6,8 +6,11 @@ $(function() {
 		$("input:checked").each(function(){
 			selected_items.push($(this).val());
 		});
-		params["selected_items"] = selected_items
-		// console.log(selected_items);
+		params["selected_items"] = selected_items;
+		params["operator"] = $("#operator").val();
+		params["number_of_results"] = $("#number_of_results").val();
+		params["operator_value"] = $("#operator_value").val();
+		console.log(params);
 		$.ajax({
 			url: "/generate_query",
 			data: params,
