@@ -1,27 +1,29 @@
 <h1>Listing items</h1>
 
 <div class="items">
+
   <%= form_tag()%>
+
     <% @items.each do |item| %>
       <%= label_tag(item) %>
       <%= check_box_tag(item, item, false, class:'item') %><br />
-      <%= %>
     <% end %>
     
-    <div>
+    <div id="choose_operator">
       <%= label_tag("Choose operator")%>
-      <%= select_tag( "nummber_of_results", options_for_select([ "<", "<=", "=>", ">"])) %>
+      <%= select_tag( "operator", options_for_select([ ["<","$lt"], ["<=","$lte"], ["=>","$gte"], [">","$gt"]])) %>
+      <%= text_field_tag(:operator_value) %>
     </div>
-    <div>
-      <%= text_field_tag(:value) %>
+
+    <div id="choose_number_of_results">
+      <%= label_tag("Choose number of results")%>
+      <%= select_tag("number_of_results", options_for_select([ "10", "15", "20", "25", "30", "40"])) %>
     </div>
-    <div>
-      <%= label_tag("Choose nummber of results")%>
-      <%= select_tag "nummber_of_results", options_for_select([ "10", "15", "20", "25", "30", "40"], "10") %>
-    </div>
+
     <div>
       <%= link_to "Generate query","#", :class =>"generate_query" %>
     </div>
+
 </div>
 
 <div class="result" style='display: none;'>
