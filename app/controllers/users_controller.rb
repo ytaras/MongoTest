@@ -12,14 +12,12 @@ class UsersController < ApplicationController
     operator = params[:operator]
     operator_value = params[:operator_value].to_i
 
-    pipeline = []
+    pipeline = [{"$project" => properties},
+                {"$match" => {:office =>
+                {operator => operator_value}}}
+    ]
 
-    pipeline[0] = {"$project" => properties}
-    pipeline[1] = {"$match" => {:office =>
-        {operator => operator_value}
-        }
-      }
-    pipeline[2] = {"$limit" => params[:number_of_results].to_i} if (params[:number_of_results].to_i > 0)
+    pipeline << {"$limit" => params[:number_of_results].to_i} unless params[:number_of_results].empty?
 
     results = MongoConnection.instance.users_collection.aggregate(pipeline)
 
