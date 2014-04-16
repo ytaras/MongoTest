@@ -23,4 +23,14 @@ $(function() {
 			}
 		});
 	});
+
+	$( "#office" ).click(function() {
+      if (this.checked) {
+            $("#choose_operator").show();
+        } else {
+            $("#choose_operator").hide();
+            $("#operator_value").val("");
+        }
+	});
+
 });
