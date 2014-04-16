@@ -9,14 +9,14 @@
       <%= check_box_tag(item, item, false, class:'item') %><br />
     <% end %>
     
-    <div id="choose_operator">
+    <div id="choose_operator" style='display: none;'>
       <%= label_tag("Choose operator")%>
       <%= select_tag( "operator", options_for_select([ ["<","$lt"], ["<=","$lte"], ["=>","$gte"], [">","$gt"]])) %>
       <%= text_field_tag(:operator_value) %>
     </div>
 
     <div id="choose_number_of_results">
-      <%= label_tag("Choose number of results")%>
+      <%= label_tag("Choose number of results") %>
       <%= text_field_tag("number_of_results") %>
     </div>
 
