@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ItemsController < ApplicationController
 
   def index
     config=YAML.load_file('lib/items_for_select.yml')
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     pipeline << {"$match" => {:office => {params[:operator] => params[:operator_value].to_i} } } unless params[:operator_value].empty?
     pipeline << {"$limit" => params[:number_of_results].to_i} unless params[:number_of_results].empty?
 
-    results = MongoConnection.instance.users_collection.aggregate(pipeline)
+    results = MongoConnection.instance.items_collection.aggregate(pipeline)
 
     render :partial => "show_result", :locals => {:results => results}, :layout => false
   end

@@ -5,9 +5,9 @@ require 'singleton'
 class MongoConnection
 	include Mongo
 	include Singleton
-	def users_collection
+	def items_collection
 		@connection = MongoClient.new("localhost", 27017)
 		@data = @connection.db("mongo_test_db")
-		@users = @data.collection("users")
+		@items = @data.collection("users")
 	end
 end

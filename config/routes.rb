@@ -1,8 +1,8 @@
 MongoTest::Application.routes.draw do
-  resources :users
+  resources :items
 
-  #get "generate_query", controller: 'users', action: :generate_query
-  get 'generate_query' => 'users#generate_query'
+  #get "generate_query", controller: 'items', action: :generate_query
+  get 'generate_query' => 'items#generate_query'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
